@@ -21,26 +21,32 @@ const App = () => {
   const author = useSelector((state) => state.author);
   const color = useSelector((state) => state.color);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [fade, setFade] = useState(false);
 
   const fetchQuotes = async () => {
     setIsUpdating(true);
-    const response = await fetch(
-      'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json'
-    );
-    const data = await response.json();
-    const randomQuote =
-      data.quotes[Math.floor(Math.random() * data.quotes.length)];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    setFade(false); // Start fade out
+    setTimeout(async () => {
+      const response = await fetch(
+        'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json'
+      );
+      const data = await response.json();
+      const randomQuote =
+        data.quotes[Math.floor(Math.random() * data.quotes.length)];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-    dispatch({
-      type: 'SET_QUOTE',
-      payload: randomQuote,
-    });
-    dispatch({
-      type: 'SET_COLOR',
-      payload: randomColor,
-    });
-    setIsUpdating(false);
+      dispatch({
+        type: 'SET_QUOTE',
+        payload: randomQuote,
+      });
+      dispatch({
+        type: 'SET_COLOR',
+        payload: randomColor,
+      });
+
+      setFade(true); // Start fade in
+      setIsUpdating(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -56,11 +62,11 @@ const App = () => {
   return (
     <div id="wrapper">
       <div id="quote-box">
-        <div className="quote-text" style={{ color }}>
+        <div className="quote-text" style={{ color, opacity: fade ? 1 : 0 }}>
           <i className="fa fa-quote-left"> </i>
           <span id="text">{quote}</span>
         </div>
-        <div className="quote-author" style={{ color }}>
+        <div className="quote-author" style={{ color, opacity: fade ? 1 : 0 }}>
           - <span id="author">{author}</span>
         </div>
         <div className="buttons">
