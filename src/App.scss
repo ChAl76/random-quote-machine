@@ -15,8 +15,6 @@ $white: #fff;
   }
 
 body {
-  // background-color: var(--dynamic-button-color, #5638ff);
-  // color: var(--dynamic-color, #f39c12);
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   display: flex;
@@ -35,7 +33,6 @@ body {
   padding: 30px 40px;
 
   .quote-text {
-    // color: var(--dynamic-button-color, #5638ff);
     text-align: center;
     font-weight: 500;
     font-size: 1.6em;
@@ -48,7 +45,6 @@ body {
   }
 
   .quote-author {
-    // color: var(--dynamic-button-color, #5638ff);
     padding-top: 20px;
     font-size: 1.1em;
     text-align: right;
@@ -63,7 +59,6 @@ body {
     width: 495px;
 
     .button {
-      // background-color: var(--dynamic-button-color, #5638ff);
       color: $white;
       height: 38px;
       border: none;

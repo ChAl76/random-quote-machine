@@ -49,7 +49,7 @@ const App = () => {
 
   useEffect(() => {
     if (color) {
-      document.body.style.backgroundColor = color; // This will set the body's background color
+      document.body.style.backgroundColor = color;
     }
   }, [color]);
 
