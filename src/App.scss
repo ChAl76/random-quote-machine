@@ -9,10 +9,10 @@ $white: #fff;
     vertical-align: baseline;
   }
   
-  div {
-    position: relative;
-    z-index: 2;
-  }
+  // div {
+  //   position: relative;
+  //   z-index: 2;
+  // }
 
 body {
   font-family: 'Raleway', sans-serif;
@@ -109,4 +109,28 @@ body {
       color: $white;
     }
   }
+  
+// -------- responsive --------
+
+@media (max-width: 800px) {
+  #quote-box {
+    padding: 20px 30px;
+    width: 23em;
+
+    .quote-text {
+      font-size: 1.3em;
+      width: 18em;
+    }
+  
+    .quote-author {
+      font-size: 1em;
+      width: 24em;
+    }
+  
+    .buttons {
+      width: 24em;
+      }
+    }
+  }
+
   
